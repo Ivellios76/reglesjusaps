@@ -179,68 +179,73 @@
     </div>
     <div id="result" class="result"></div>
 
-    <script>
-        let currentQuestion = 0;
-        let score = 0;
-        const questions = document.querySelectorAll('.question');
-        const resultDiv = document.getElementById('result');
-        let timer;
+<script>
+    let currentQuestion = 0;
+    let score = 0;
+    let totalQuestions = 0;
+    const questions = document.querySelectorAll('.question');
+    const resultDiv = document.getElementById('result');
+    let timer;
 
-        function showQuestion(index) {
-            if (index < questions.length) {
-                questions[index].classList.remove('hidden');
-                startTimer();
-            } else {
-                showFinalScore();
-            }
+    function showQuestion(index) {
+        if (index < questions.length) {
+            questions[index].classList.remove('hidden');
+            startTimer();
+        } else {
+            showFinalScore();
+        }
+    }
+
+    function hideQuestion(index) {
+        if (index < questions.length) {
+            questions[index].classList.add('hidden');
+        }
+    }
+
+    function checkAnswer(button, answer) {
+        clearTimeout(timer);
+        const questionDiv = button.parentElement;
+        const correctAnswer = questionDiv.getAttribute('data-correct');
+        totalQuestions++;
+
+        if (answer === correctAnswer) {
+            button.style.backgroundColor = '#90ee90'; // Light green for correct answer
+            score += 2;
+            resultDiv.innerHTML = `<p>Correct !</p>`;
+        } else {
+            button.style.backgroundColor = '#ffcccb'; // Light red for incorrect answer
+            resultDiv.innerHTML = `<p>Incorrect. La bonne réponse est ${correctAnswer}</p>`;
         }
 
-        function hideQuestion(index) {
-            if (index < questions.length) {
-                questions[index].classList.add('hidden');
-            }
-        }
+        setTimeout(() => {
+            resultDiv.innerHTML = '';
+            hideQuestion(currentQuestion);
+            currentQuestion++;
+            showQuestion(currentQuestion);
+        }, 2000);
+    }
 
-        function checkAnswer(button, answer) {
-            clearTimeout(timer);
-            const questionDiv = button.parentElement;
-            const correctAnswer = questionDiv.getAttribute('data-correct');
-
-            if (answer === correctAnswer) {
-                button.style.backgroundColor = '#90ee90'; // Light green for correct answer
-                score += 2;
-                resultDiv.innerHTML = `<p>Correct !</p>`;
-            } else {
-                button.style.backgroundColor = '#ffcccb'; // Light red for incorrect answer
-                resultDiv.innerHTML = `<p>Incorrect. La bonne réponse est ${correctAnswer}</p>`;
-            }
-
+    function startTimer() {
+        timer = setTimeout(() => {
+            resultDiv.innerHTML = `<p>Temps écoulé !</p>`;
+            totalQuestions++;
             setTimeout(() => {
                 resultDiv.innerHTML = '';
                 hideQuestion(currentQuestion);
                 currentQuestion++;
                 showQuestion(currentQuestion);
             }, 2000);
-        }
+        }, 45000); // 45 seconds timer
+    }
 
-        function startTimer() {
-            timer = setTimeout(() => {
-                resultDiv.innerHTML = `<p>Temps écoulé !</p>`;
-                setTimeout(() => {
-                    resultDiv.innerHTML = '';
-                    hideQuestion(currentQuestion);
-                    currentQuestion++;
-                    showQuestion(currentQuestion);
-                }, 2000);
-            }, 45000); // 45 seconds timer
-        }
+    function showFinalScore() {
+        const unansweredQuestions = questions.length - totalQuestions;
+        const finalScore = score - (unansweredQuestions * 2);
+        resultDiv.innerHTML = `<p>Votre score final est de ${finalScore} sur ${questions.length * 2}</p>`;
+    }
 
-        function showFinalScore() {
-            resultDiv.innerHTML = `<p>Votre score final est de ${score} sur 20</p>`;
-        }
-
-        // Initial call to show the first question
-        showQuestion(currentQuestion);
-    </script>
+    // Initial call to show the first question
+    showQuestion(currentQuestion);
+</script>
 </body>
 </html>
