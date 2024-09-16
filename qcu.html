@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QCU - Règles du Code de la sécurité intérieure importantes dans la sécurité privée</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2e8b57;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .answer-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 16px;
+            color: #000;
+            background-color: #add8e6;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: left;
+        }
+        .answer-button:hover {
+            background-color: #87ceeb;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>QCU - Sécurité Privée</h1>
+    <div id="quiz">
+        <div class="question" data-correct="b">
+            <p>1. Quelle est la condition de moralité pour accéder à la profession d'agent de sécurité ?</p>
+            <button class="answer-button" onclick="checkAnswer(this, 'a')">Avoir un casier judiciaire vierge</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'b')">Ne pas avoir commis d'actes délictueux ou d'incivilités incompatibles avec un emploi en sécurité privée</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'c')">Avoir une formation en sécurité</button>
+        </div>
+        <div class="question hidden" data-correct="a">
+            <p>2. Quel est le principe d'exercice exclusif ?</p>
+            <button class="answer-button" onclick="checkAnswer(this, 'a')">L'exercice d'une activité de sécurité privée est exclusif de toute autre prestation de services non liée à la surveillance, au gardiennage ou au transport de fonds, de bijoux ou de métaux précieux</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'b')">L'exercice d'une activité de sécurité privée est compatible avec toute autre activité professionnelle</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'c')">L'exercice d'une activité de sécurité privée est exclusif de toute activité de surveillance</button>
+        </div>
+        <div class="question hidden" data-correct="a">
+            <p>3. Quel est le principe de neutralité ?</p>
+            <button class="answer-button" onclick="checkAnswer(this, 'a')">Interdiction de s'immiscer dans les conflits du travail ou de surveiller les opinions politiques, philosophiques, religieuses ou syndicales des personnes</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'b')">Obligation de surveiller les opinions politiques des personnes</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'c')">Obligation de s'immiscer dans les conflits du travail</button>
+        </div>
+        <div class="question hidden" data-correct="a">
+            <p>4. Quelle catégorie d'armes est interdite?</p>
+            <button class="answer-button" onclick="checkAnswer(this, 'a')">Catégorie A</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'b')">Catégorie B</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'c')">Catégorie C</button>
+        </div>
+        <div class="question hidden" data-correct="b">
+            <p>5. Quelle catégorie d'armes est soumise à autorisation ?</p>
+            <button class="answer-button" onclick="checkAnswer(this, 'a')">Catégorie A</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'b')">Catégorie B</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'c')">Catégorie D</button>
+        </div>
+        <div class="question hidden" data-correct="a">
+            <p>6. Quelle est la sanction pour le port et transport illégitimes des armes et munitions ?</p>
+            <button class="answer-button" onclick="checkAnswer(this, 'a')">Amende pouvant aller jusqu'à 45 000 euros et peine d'emprisonnement pouvant aller jusqu'à 3 ans</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'b')">Amende pouvant aller jusqu'à 10 000 euros</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'c')">Peine d'emprisonnement pouvant aller jusqu'à 1 an</button>
+        </div>
+        <div class="question hidden" data-correct="a">
+            <p>7. Quelle est l'obligation de levée de doute ?</p>
+            <button class="answer-button" onclick="checkAnswer(this, 'a')">Obligation de vérifier les alarmes et de signaler les incidents</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'b')">Obligation de signaler les incidents sans vérifier les alarmes</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'c')">Obligation de vérifier les alarmes sans signaler les incidents</button>
+        </div>
+        <div class="question hidden" data-correct="a">
+            <p>8. Quelle est la réglementation sur l'utilisation des véhicules affectés aux activités de sécurité privée ?</p>
+            <button class="answer-button" onclick="checkAnswer(this, 'a')">Utilisation réglementée pour les activités de sécurité privée</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'b')">Utilisation libre pour toutes les activités</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'c')">Utilisation interdite pour les activités de sécurité privée</button>
+        </div>
+        <div class="question hidden" data-correct="a">
+            <p>9. Quelle est la réglementation sur l'utilisation des chiens dans les activités de sécurité privée ?</p>
+            <button class="answer-button" onclick="checkAnswer(this, 'a')">Utilisation encadrée par des règles spécifiques</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'b')">Utilisation libre sans réglementation</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'c')">Utilisation interdite</button>
+        </div>
+        <div class="question hidden" data-correct="a">
+            <p>10. Quelle est la validité de la carte professionnelle délivrée par le CNAPS ?</p>
+            <button class="answer-button" onclick="checkAnswer(this, 'a')">5 ans</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'b')">3 ans</button>
+            <button class="answer-button" onclick="checkAnswer(this, 'c')">1 an</button>
+        </div>
+        <div class="question hidden" data-correct="b">
+    <p>11. Quelle est la durée de validité de la carte professionnelle délivrée par le CNAPS ?</p>
+    <button class="answer-button" onclick="checkAnswer(this, 'a')">3 ans</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'b')">5 ans</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'c')">10 ans</button>
+</div>
+
+<div class="question hidden" data-correct="b">
+    <p>12. Quel article du Code de la sécurité intérieure fait référence à l'obligation de levée de doute ?</p>
+    <button class="answer-button" onclick="checkAnswer(this, 'a')">L612-2</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'b')">L613-6</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'c')">L612-4</button>
+</div>
+
+<div class="question hidden" data-correct="a">
+    <p>13. Quel article du Code de la sécurité intérieure interdit aux agents de sécurité de s'immiscer dans les conflits du travail ?</p>
+    <button class="answer-button" onclick="checkAnswer(this, 'a')">L612-4</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'b')">L612-20</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'c')">L613-3</button>
+</div>
+
+<div class="question hidden" data-correct="b">
+    <p>14. Quel article du Code de la sécurité intérieure définit les conditions de moralité pour accéder à la profession d'agent de sécurité ?</p>
+    <button class="answer-button" onclick="checkAnswer(this, 'a')">L612-2</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'b')">L612-20 à L612-23</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'c')">L613-6</button>
+</div>
+
+<div class="question hidden" data-correct="a">
+    <p>15. Quel article du Code de la sécurité intérieure régit l'exclusivité de l'exercice d'une activité de sécurité privée ?</p>
+    <button class="answer-button" onclick="checkAnswer(this, 'a')">L612-2</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'b')">L613-3</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'c')">L612-4</button>
+</div>
+
+<div class="question hidden" data-correct="b">
+    <p>16. Quelle est la sanction pour le non-respect des conditions de conservation des armes ?</p>
+    <button class="answer-button" onclick="checkAnswer(this, 'a')">Amende de 10 000 euros</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'b')">Suspension ou retrait de l'autorisation d'exercer</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'c')">Peine d'emprisonnement de 1 an</button>
+</div>
+
+<div class="question hidden" data-correct="c">
+    <p>17. Quelle catégorie d'armes est soumise à déclaration ?</p>
+    <button class="answer-button" onclick="checkAnswer(this, 'a')">Catégorie A</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'b')">Catégorie B</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'c')">Catégorie C</button>
+</div>
+
+<div class="question hidden" data-correct="b">
+    <p>18. Quel article du Code de la sécurité intérieure régit les conditions de transport des armes ?</p>
+    <button class="answer-button" onclick="checkAnswer(this, 'a')">R613-3-1</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'b')">R613-3-3</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'c')">R613-3-4</button>
+</div>
+
+<div class="question hidden" data-correct="c">
+    <p>19. Quelle est la durée de validité de l'autorisation délivrée par le préfet pour les armes de catégories A1 et B ?</p>
+    <button class="answer-button" onclick="checkAnswer(this, 'a')">1 an</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'b')">3 ans</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'c')">5 ans</button>
+</div>
+
+<div class="question hidden" data-correct="c">
+    <p>20. Quel article du Code de la sécurité intérieure régit les conditions de conservation des armes ?</p>
+    <button class="answer-button" onclick="checkAnswer(this, 'a')">R613-3-1</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'b')">R613-3-3</button>
+    <button class="answer-button" onclick="checkAnswer(this, 'c')">R613-3-4</button>
+</div>
+    </div>
+    <div id="result" class="result"></div>
+
+    <script>
+        let currentQuestion = 0;
+        let score = 0;
+        const questions = document.querySelectorAll('.question');
+        const resultDiv = document.getElementById('result');
+        let timer;
+
+        function showQuestion(index) {
+            if (index < questions.length) {
+                questions[index].classList.remove('hidden');
+                startTimer();
+            } else {
+                showFinalScore();
+            }
+        }
+
+        function hideQuestion(index) {
+            if (index < questions.length) {
+                questions[index].classList.add('hidden');
+            }
+        }
+
+        function checkAnswer(button, answer) {
+            clearTimeout(timer);
+            const questionDiv = button.parentElement;
+            const correctAnswer = questionDiv.getAttribute('data-correct');
+
+            if (answer === correctAnswer) {
+                button.style.backgroundColor = '#90ee90'; // Light green for correct answer
+                score += 2;
+                resultDiv.innerHTML = `<p>Correct !</p>`;
+            } else {
+                button.style.backgroundColor = '#ffcccb'; // Light red for incorrect answer
+                resultDiv.innerHTML = `<p>Incorrect. La bonne réponse est ${correctAnswer}</p>`;
+            }
+
+            setTimeout(() => {
+                resultDiv.innerHTML = '';
+                hideQuestion(currentQuestion);
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            }, 2000);
+        }
+
+        function startTimer() {
+            timer = setTimeout(() => {
+                resultDiv.innerHTML = `<p>Temps écoulé !</p>`;
+                setTimeout(() => {
+                    resultDiv.innerHTML = '';
+                    hideQuestion(currentQuestion);
+                    currentQuestion++;
+                    showQuestion(currentQuestion);
+                }, 2000);
+            }, 45000); // 45 seconds timer
+        }
+
+        function showFinalScore() {
+            resultDiv.innerHTML = `<p>Votre score final est de ${score} sur 20</p>`;
+        }
+
+        // Initial call to show the first question
+        showQuestion(currentQuestion);
+    </script>
+</body>
+</html>
